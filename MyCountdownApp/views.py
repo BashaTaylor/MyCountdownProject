@@ -1,19 +1,33 @@
-# Create your views here.
 from django.shortcuts import render, redirect
 from .models import Countdown
+from .forms import CountdownForm
 
 def index(request):
-    return render(request, 'index.html')
+    if request.method == 'POST':
+        form = CountdownForm(request.POST)
+        if form.is_valid():
+            form.save()   # Save the form data to the database
+            return redirect('index')  # Redirect 
+    else:
+        form = CountdownForm()
 
-def all_countdowns(request):
     countdowns = Countdown.objects.all()
-    return render(request, 'MyCountdownApp/all_countdown.html')
+    print(countdowns)  # Debug print to ensure data is being fetched
+    return render(request, 'index.html', {'form': form, 'countdowns': countdowns})
 
 def add_countdown(request):
     if request.method == 'POST':
-        # Handle form submission logic here
-        # Redirect to a success URL or render a success template
-        return redirect('index')  # Example redirect to index page after adding countdown
+        form = CountdownForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('all_countdowns')  # Redirect to the page showing all countdowns
     else:
-        # Handle GET request to display initial form
-        return render(request, 'index.html')
+        form = CountdownForm()
+    return render(request, 'index.html', {'form': form})
+
+def all_countdowns(request):
+    countdowns = Countdown.objects.all()
+    return render(request, 'all_countdowns.html', {'countdowns': countdowns})
+
+
+# don't touch

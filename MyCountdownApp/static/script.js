@@ -315,3 +315,14 @@ showPage('page1');
 
 // Start updating countdowns every second
 updateCountdowns();
+
+function validateForm() {
+    var eventName = document.forms["countdownForm"]["event_name"].value;
+    var eventDate = document.forms["countdownForm"]["event_date"].value;
+    
+    if (eventName === "" || eventDate === "") {
+        alert("Please fill out all fields.");
+        return false;
+    }
+    return true;  // Form submission proceeds if all fields are filled out
+}

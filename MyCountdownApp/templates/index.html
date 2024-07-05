@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Countdown App</title>
+    <title>Add Countdown</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}">
-    <script defer src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js"></script>
 </head>
+
 <body>
-    <h1>Add Countdown</h1>
-    <form action="{% url 'add_countdown' %}" method="post">
+    <h1>Welcome to the Countdown App!</h1>
+    <h2>Add Countdown</h2>
+
+    <form name="countdownForm" method="POST" action="{% url 'add_countdown' %}" onsubmit="return validateForm()">
         {% csrf_token %}
-        <label for="event_title">Event Title:</label>
-        <input type="text" id="event_title" name="event_title" required><br><br>
-
-        <label for="event_date">Event Date:</label>
-        <input type="datetime-local" id="event_date" name="event_date" required><br><br>
-
-        <label for="event_emoji">Event Emoji:</label>
-        <input type="text" id="event_emoji" name="event_emoji" placeholder="Select an emoji"><br><br>
-
+        {{ form.as_p }}
         <button type="submit">Add Countdown</button>
+
+        <button class="button" type="button" onclick="window.location.href='{% url 'all_countdowns' %}'">View All Countdowns</button>
+
     </form>
     <script src="{% static 'script.js' %}"></script>
 </body>
+
 </html>

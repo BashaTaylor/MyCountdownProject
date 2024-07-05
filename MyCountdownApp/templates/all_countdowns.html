@@ -1,19 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>All Countdowns</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}">
-    <script defer src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js"></script>
 </head>
+
 <body>
-    <h1>All Countdowns</h1>
+    <h2>All Countdowns</h2>
     <ul>
-    {% for countdown in countdowns %}
-        <li>{{ countdown.title }} - {{ countdown.event_date }}</li>
-    {% endfor %}
+        {% for countdown in countdowns %}
+        <li>
+            <strong>{{ countdown.event_title }}</strong> - {{ countdown.event_date }}<br>
+            {% if countdown.notes %}
+            <p>Notes: {{ countdown.notes }}</p>
+            {% else %}
+            <p>No notes added yet.</p>
+            {% endif %}
+        </li>
+        {% empty %}
+        <li>No countdowns yet.</li>
+        {% endfor %}
     </ul>
+    <button class="button" type="button" onclick="window.location.href='{% url 'index' %}'">Home</button>
     <script src="{% static 'script.js' %}"></script>
 </body>
+
 </html>
