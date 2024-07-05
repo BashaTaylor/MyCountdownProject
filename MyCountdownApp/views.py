@@ -31,3 +31,21 @@ def all_countdowns(request):
 
 
 # don't touch
+
+def delete_countdown(request, countdown_id):
+    countdown = get_object_or_404(Countdown, pk=countdown_id)
+    if request.method == 'POST':
+        countdown.delete()
+        return redirect('all_countdowns')
+    return render(request, 'all_countdowns.html', {'countdowns': Countdown.objects.all()})
+
+def edit_countdown(request, countdown_id):
+    countdown = get_object_or_404(Countdown, pk=countdown_id)
+    if request.method == 'POST':
+        form = CountdownForm(request.POST, instance=countdown)
+        if form.is_valid():
+            form.save()
+            return redirect('all_countdowns')
+    else:
+        form = CountdownForm(instance=countdown)
+    return render(request, 'edit_countdown.html', {'form': form})

@@ -12,6 +12,7 @@
     <h2>All Countdowns</h2>
     <ul>
         {% for countdown in countdowns %}
+        <div>
         <li>
             <strong>{{ countdown.event_title }}</strong> - {{ countdown.event_date }}<br>
             {% if countdown.notes %}
