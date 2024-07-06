@@ -20,7 +20,7 @@
             {{ form.as_p }}
             
             <button type="submit">Add Countdown</button>
-            <button class="button" type="button" onclick="window.location.href='{% url 'all_countdowns' %}'">View All Countdowns</button>
+            <button class="button" type="submit" onclick="window.location.href='{% url 'all_countdowns' %}'">View All Countdowns</button>
         </form>
     </div>
     <script src="{% static 'script.js' %}"></script>
