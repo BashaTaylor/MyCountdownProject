@@ -6,17 +6,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Countdowns</title>
+    <!-- Style sheet link -->
     <link rel="stylesheet" href="{% static 'style2.css' %}">
 </head>
 
 <body>
     <h1 id="top-page">All Countdowns</h1>
-
-    <!-- Home button -->
-    <button onclick="window.location.href='{% url 'index' %}'">Previous page</button>
-
     <div id="countdowns">
         {% for countdown in countdowns %}
+
+        <!-- Display title, emoji, date, time. -->
         <div class="countdown-item">
             <h3>{{ countdown.event_title }}</h3>
             <div class="emoji">{{ countdown.event_emoji }}</div>
@@ -38,7 +37,14 @@
             </div>
 
             <!-- Display countdown timer -->
-            <div id="countdown-timer-{{ forloop.counter0 }}" class="countdown-timer"></div>
+            <div class="countdown-timer" data-event-date="2024-07-31" data-event-time="18:00:00">
+                <p>
+                    <span class="days">0</span> days 
+                    <span class="hours">0</span> hours 
+                    <span class="minutes">0</span> minutes 
+                    <span class="seconds">0</span> seconds
+                </p>
+            </div>
             <br>
             <button class="edit-button" onclick="window.location.href='{% url 'edit_countdown' countdown.id %}'">Edit</button>
             
@@ -50,69 +56,14 @@
         {% endfor %}
     </div>
 
+    <!-- Back Home button -->
+    <button class="back-home" onclick="window.location.href='{% url 'index' %}'">⬅️</button>
+
     <!-- Back to Top button -->
     <button class="back-to-top" onclick="scrollToTop()">⬆️</button>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const countdownItems = document.querySelectorAll('.countdown-item');
-            countdownItems.forEach((countdownItem, index) => {
-                const eventDateElement = countdownItem.querySelector('.event-date');
-                const eventTimeElement = countdownItem.querySelector('.event-time');
-
-                if (eventDateElement && eventTimeElement) {
-                    const eventDate = eventDateElement.textContent.split('Date: ')[1];
-                    const eventTime = eventTimeElement.textContent.split('Time: ')[1];
-                    const endTime = new Date(`${eventDate}T${eventTime}`);
-
-                    if (!isNaN(endTime.getTime())) {
-                        startCountdownTimer(endTime, `countdown-timer-${index}`);
-                    } else {
-                        console.error(`Invalid date or time: ${eventDate} ${eventTime}`);
-                    }
-                } else {
-                    console.error('Missing event date or time elements');
-                }
-            });
-        });
-
-        function getTimeRemaining(endTime) {
-            const total = Date.parse(endTime) - Date.now();
-            const seconds = Math.floor((total / 1000) % 60);
-            const minutes = Math.floor((total / 1000 / 60) % 60);
-            const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
-            const days = Math.floor(total / (1000 * 60 * 60 * 24));
-            return {
-                total,
-                days,
-                hours,
-                minutes,
-                seconds
-            };
-        }
-
-        function startCountdownTimer(endTime, elementId) {
-            function updateCountdown() {
-                const time = getTimeRemaining(endTime);
-                const countdownElement = document.getElementById(elementId);
-
-                if (!countdownElement) return;
-
-                if (time.total < 0) {
-                    countdownElement.innerHTML = "EXPIRED";
-                } else {
-                    countdownElement.innerHTML = `${time.days}d ${time.hours}h ${time.minutes}m ${time.seconds}s`;
-                    setTimeout(updateCountdown, 1000);
-                }
-            }
-
-            updateCountdown();
-        }
-
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    </script>
+    <!-- Script link -->
+    <script src="{% static 'script.js' %}"></script>
 </body>
 
 </html>

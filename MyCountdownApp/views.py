@@ -3,6 +3,7 @@ from .models import Countdown
 from .forms import CountdownForm
 from django.utils import timezone
 
+
 def index(request):
     if request.method == 'POST':
         form = CountdownForm(request.POST)
@@ -12,6 +13,7 @@ def index(request):
     else:
         form = CountdownForm()
     return render(request, 'index.html', {'form': form})
+
 
 
 def add_countdown(request):
@@ -26,6 +28,7 @@ def add_countdown(request):
     else:
         form = CountdownForm()
     return render(request, 'index.html', {'form': form})
+
 
 
 def all_countdowns(request):
@@ -59,6 +62,8 @@ def edit_countdown(request, id):
         form = CountdownForm(instance=countdown)
 
     return render(request, 'edit_countdown.html', {'form': form, 'countdown': countdown})
+
+
 
 def delete_countdown(request, id):
     countdown = get_object_or_404(Countdown, id=id)
