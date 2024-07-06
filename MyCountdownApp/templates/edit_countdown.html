@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Countdown</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style3.css' %}">
+</head>
+
+<body>
+    <h1>Edit Countdown</h1>
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            <label for="event_title">Event Title:</label><br>
+            <input type="text" id="event_title" name="event_title" value="{{ countdown.event_title }}"><br><br>
+    
+            <label for="event_date">Event Date:</label><br>
+            <input type="date" id="event_date" name="event_date" value="{{ countdown.event_date }}"><br><br>
+    
+            <label for="event_time">Event Time:</label><br>
+            <input type="time" id="event_time" name="event_time" value="{{ countdown.event_time }}"><br><br>
+    
+            <label for="event_emoji">Event Emoji:</label><br>
+            <input type="text" id="event_emoji" name="event_emoji" value="{{ countdown.event_emoji }}"><br><br>
+    
+            <label for="notes">Notes:</label><br>
+            <textarea id="notes" name="notes">{{ countdown.notes }}</textarea><br><br>
+
+
+            <button type="submit">Save</button>
+            <button class="button" type="button" onclick="window.location.href='{% url 'all_countdowns' %}'">Cancel</button>
+        </form>
+    </div>
+    <script src="{% static 'script.js' %}"></script>
+</body>
+
+</html>

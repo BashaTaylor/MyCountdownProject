@@ -2,24 +2,27 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Countdown</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'style1.css' %}">
+    <!-- Include Emoji Button Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@4.6.2/dist/index.min.js"></script>
 </head>
 
 <body>
-    <h1>Welcome to the Countdown App!</h1>
-    <h2>Add Countdown</h2>
-
-    <form name="countdownForm" method="POST" action="{% url 'add_countdown' %}" onsubmit="return validateForm()">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Add Countdown</button>
-
-        <button class="button" type="button" onclick="window.location.href='{% url 'all_countdowns' %}'">View All Countdowns</button>
-
-    </form>
+    <div class="container">
+        <h1>Welcome to the Countdown App!</h1>
+        <h2>Add Countdown</h2>
+        <form name="countdownForm" method="POST" action="{% url 'add_countdown' %}" onsubmit="return validateForm()">
+            {% csrf_token %}
+            {{ form.as_p }}
+            
+            <button type="submit">Add Countdown</button>
+            <button class="button" type="button" onclick="window.location.href='{% url 'all_countdowns' %}'">View All Countdowns</button>
+        </form>
+    </div>
     <script src="{% static 'script.js' %}"></script>
 </body>
 

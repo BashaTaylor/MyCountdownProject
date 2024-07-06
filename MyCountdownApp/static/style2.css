@@ -1,0 +1,144 @@
+/* Basic reset and styles */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, rgb(7, 118, 253), white , rgba(144, 249, 249, 0.821) );
+    margin: 0;
+    padding: 0;
+    text-align: center; /* Center align text content */
+}
+
+h1 {
+    text-align: center;
+}
+
+.countdown-item {
+    background-color: #c9ee50;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center contents */
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto; /* Center the countdown item */
+}
+
+.countdown-timer {
+    background-color: #007BFF;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    width: 97%;
+    height: 40px;
+}
+
+
+.countdown-item .emoji {
+    font-size: 48px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    background-color: #007BFF;
+    color: white;
+}
+
+.countdown-item p {
+    margin-bottom: 5px;
+}
+
+.countdown-item .countdown {
+    background-color: #007BFF;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.countdown-item .notes {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    min-height: 40px; /* Ensure visibility */
+}
+
+.countdown-item .countdown span {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 5px;
+}
+
+.countdown-container {
+    justify-content: center;
+}
+
+
+
+input {
+    border-radius: 5px;
+    border-color: lightgray;
+}
+
+
+/* Style individual buttons */
+button {
+    padding: 7px;
+    border-radius: 7px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    
+}
+
+
+button:hover {
+    background-color: #0056b3;
+    /* Darker shade on hover */
+}
+
+.notes {
+    display: block; /* or inline-block */
+    /* Add any other styling you need */
+}
+
+.notes-list {
+    list-style-type: none; /* Hide the list markers */
+    padding: 0;
+}
+
+.notes-list li {
+    display: inline; /* Display notes inline */
+    margin-right: 10px; /* Add some space between notes */
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    transition: transform 0.5s, background-color 0.5s;
+    z-index: 1000;
+}
+
+.back-to-top:hover {
+    transform: rotate(360deg);
+    background: rgb(32, 32, 130);
+}

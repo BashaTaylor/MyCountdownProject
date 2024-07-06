@@ -1,46 +1,55 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Countdown
 from .forms import CountdownForm
+from django.utils import timezone
 
 def index(request):
     if request.method == 'POST':
         form = CountdownForm(request.POST)
         if form.is_valid():
-            form.save()   # Save the form data to the database
-            return redirect('index')  # Redirect 
+            form.save()
+            return redirect('all_countdowns')
     else:
         form = CountdownForm()
+    return render(request, 'index.html', {'form': form})
 
-    countdowns = Countdown.objects.all()
-    print(countdowns)  # Debug print to ensure data is being fetched
-    return render(request, 'index.html', {'form': form, 'countdowns': countdowns})
 
 def add_countdown(request):
     if request.method == 'POST':
         form = CountdownForm(request.POST)
         if form.is_valid():
+            print("Form is valid.")
             form.save()
-            return redirect('all_countdowns')  # Redirect to the page showing all countdowns
+            return redirect('all_countdowns')
+        else:
+            print("Form is invalid.")
     else:
         form = CountdownForm()
     return render(request, 'index.html', {'form': form})
 
+
 def all_countdowns(request):
-    countdowns = Countdown.objects.all()
-    return render(request, 'all_countdowns.html', {'countdowns': countdowns})
+    countdowns = Countdown.objects.all().values('id', 'event_title', 'event_date', 'event_time', 'event_emoji', 'notes')
+    formatted_countdowns = []
+    for countdown in countdowns:
+        event_datetime = countdown['event_date'].isoformat() + 'T' + countdown['event_time'].strftime('%H:%M:%S')
+        notes = countdown['notes'].split('\n') if countdown['notes'] else []
+        formatted_countdowns.append({
+            'id': countdown['id'],
+            'event_title': countdown['event_title'],
+            'event_date': countdown['event_date'],
+            'event_time': countdown['event_time'],
+            'event_datetime': event_datetime,
+            'event_emoji': countdown['event_emoji'],
+            'notes': notes,
+        })
+    return render(request, 'all_countdowns.html', {'countdowns': formatted_countdowns})
 
 
-# don't touch
 
-def delete_countdown(request, countdown_id):
-    countdown = get_object_or_404(Countdown, pk=countdown_id)
-    if request.method == 'POST':
-        countdown.delete()
-        return redirect('all_countdowns')
-    return render(request, 'all_countdowns.html', {'countdowns': Countdown.objects.all()})
-
-def edit_countdown(request, countdown_id):
-    countdown = get_object_or_404(Countdown, pk=countdown_id)
+def edit_countdown(request, id):
+    countdown = get_object_or_404(Countdown, id=id)
+    
     if request.method == 'POST':
         form = CountdownForm(request.POST, instance=countdown)
         if form.is_valid():
@@ -48,4 +57,12 @@ def edit_countdown(request, countdown_id):
             return redirect('all_countdowns')
     else:
         form = CountdownForm(instance=countdown)
-    return render(request, 'edit_countdown.html', {'form': form})
+
+    return render(request, 'edit_countdown.html', {'form': form, 'countdown': countdown})
+
+def delete_countdown(request, id):
+    countdown = get_object_or_404(Countdown, id=id)
+    countdown.delete()
+    return redirect('all_countdowns')
+
+

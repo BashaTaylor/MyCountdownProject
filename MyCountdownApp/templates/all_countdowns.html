@@ -1,32 +1,118 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Countdowns</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'style2.css' %}">
 </head>
 
 <body>
-    <h2>All Countdowns</h2>
-    <ul>
+    <h1 id="top-page">All Countdowns</h1>
+
+    <!-- Home button -->
+    <button onclick="window.location.href='{% url 'index' %}'">Previous page</button>
+
+    <div id="countdowns">
         {% for countdown in countdowns %}
-        <div>
-        <li>
-            <strong>{{ countdown.event_title }}</strong> - {{ countdown.event_date }}<br>
-            {% if countdown.notes %}
-            <p>Notes: {{ countdown.notes }}</p>
-            {% else %}
-            <p>No notes added yet.</p>
-            {% endif %}
-        </li>
-        {% empty %}
-        <li>No countdowns yet.</li>
+        <div class="countdown-item">
+            <h3>{{ countdown.event_title }}</h3>
+            <div class="emoji">{{ countdown.event_emoji }}</div>
+            <p class="event-date">Date: {{ countdown.event_date }}</p>
+            <p class="event-time">Time: {{ countdown.event_time }}</p>
+            
+            <!-- Display notes -->
+            <h4>Notes:</h4>
+            <div class="notes">
+                <ul class="notes-list">
+                    {% if countdown.notes %}
+                        {% for note in countdown.notes %}
+                            <li>{{ note }}</li>
+                        {% endfor %}
+                    {% else %}
+                        <li>No notes</li>
+                    {% endif %}
+                </ul>
+            </div>
+
+            <!-- Display countdown timer -->
+            <div id="countdown-timer-{{ forloop.counter0 }}" class="countdown-timer"></div>
+            <br>
+            <button class="edit-button" onclick="window.location.href='{% url 'edit_countdown' countdown.id %}'">Edit</button>
+            
+            <form action="{% url 'delete_countdown' countdown.id %}" method="POST" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="delete-button">Delete</button>
+            </form>
+        </div>
         {% endfor %}
-    </ul>
-    <button class="button" type="button" onclick="window.location.href='{% url 'index' %}'">Home</button>
-    <script src="{% static 'script.js' %}"></script>
+    </div>
+
+    <!-- Back to Top button -->
+    <button class="back-to-top" onclick="scrollToTop()">⬆️</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const countdownItems = document.querySelectorAll('.countdown-item');
+            countdownItems.forEach((countdownItem, index) => {
+                const eventDateElement = countdownItem.querySelector('.event-date');
+                const eventTimeElement = countdownItem.querySelector('.event-time');
+
+                if (eventDateElement && eventTimeElement) {
+                    const eventDate = eventDateElement.textContent.split('Date: ')[1];
+                    const eventTime = eventTimeElement.textContent.split('Time: ')[1];
+                    const endTime = new Date(`${eventDate}T${eventTime}`);
+
+                    if (!isNaN(endTime.getTime())) {
+                        startCountdownTimer(endTime, `countdown-timer-${index}`);
+                    } else {
+                        console.error(`Invalid date or time: ${eventDate} ${eventTime}`);
+                    }
+                } else {
+                    console.error('Missing event date or time elements');
+                }
+            });
+        });
+
+        function getTimeRemaining(endTime) {
+            const total = Date.parse(endTime) - Date.now();
+            const seconds = Math.floor((total / 1000) % 60);
+            const minutes = Math.floor((total / 1000 / 60) % 60);
+            const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+            const days = Math.floor(total / (1000 * 60 * 60 * 24));
+            return {
+                total,
+                days,
+                hours,
+                minutes,
+                seconds
+            };
+        }
+
+        function startCountdownTimer(endTime, elementId) {
+            function updateCountdown() {
+                const time = getTimeRemaining(endTime);
+                const countdownElement = document.getElementById(elementId);
+
+                if (!countdownElement) return;
+
+                if (time.total < 0) {
+                    countdownElement.innerHTML = "EXPIRED";
+                } else {
+                    countdownElement.innerHTML = `${time.days}d ${time.hours}h ${time.minutes}m ${time.seconds}s`;
+                    setTimeout(updateCountdown, 1000);
+                }
+            }
+
+            updateCountdown();
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
 </body>
 
 </html>
