@@ -1,0 +1,22 @@
+# Site settings
+title: My Jekyll Site
+description: A simple website built with Jekyll
+url: "https://example.com"
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+theme: jekyll-theme-primer
+
+# Permalinks
+permalink: /:title/
+
+# Destination for GitHub Pages
+destination: _site
+
+# Exclude files from the build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
