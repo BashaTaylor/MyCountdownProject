@@ -44,24 +44,24 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Found countdown timers:', countdownTimers.length);
 
     countdownTimers.forEach((countdownTimer, index) => {
-        const eventDateElement = countdownTimer.dataset.eventDate;
-        const eventTimeElement = countdownTimer.dataset.eventTime;
+        const eventDate = countdownTimer.getAttribute('data-event-date');
+        const eventTime = countdownTimer.getAttribute('data-event-time');
+        console.log(`Countdown ${index}: Date - ${eventDate}, Time - ${eventTime}`);
 
-        if (eventDateElement && eventTimeElement) {
-            const endTime = new Date(`${eventDateElement}T${eventTimeElement}`);
+        if (eventDate && eventTime) {
+            const endTime = new Date(`${eventDate}T${eventTime}`);
+            console.log(`Parsed end time: ${endTime}`);
 
             if (!isNaN(endTime.getTime())) {
                 startCountdownTimer(endTime, countdownTimer);
             } else {
-                console.error(`Invalid date or time: ${eventDateElement} ${eventTimeElement}`);
+                console.error(`Invalid date or time: ${eventDate} ${eventTime}`);
             }
         } else {
             console.error(`Missing or invalid data attributes for countdown timer element`);
         }
     });
 });
-
-
 
 // Function to scroll to the top of the page
 function scrollToTop() {

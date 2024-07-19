@@ -16,14 +16,13 @@
         <h1>Welcome to the Countdown App!</h1>
         <h2>Add Countdown</h2>
         <form name="countdownForm" method="POST" action="{% url 'add_countdown' %}" onsubmit="return validateForm()">
-            {% csrf_token %}
-            {{ form.as_p }}
-            
+            {% csrf_token %} {{ form.as_p }}
+
             <button type="submit">Add Countdown</button>
             <button class="button" type="submit" onclick="window.location.href='{% url 'all_countdowns' %}'">View All Countdowns</button>
         </form>
     </div>
-    <script src="{% static 'script.js' %}"></script>
+    <script src="static/script.js"></script>
 </body>
 
 </html>
