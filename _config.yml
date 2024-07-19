@@ -2,7 +2,8 @@
 title: My Jekyll Site
 description: A simple website built with Jekyll
 url: "https://example.com"
-baseurl: ""
+baseurl: "/repository"
+
 
 # Build settings
 markdown: kramdown
