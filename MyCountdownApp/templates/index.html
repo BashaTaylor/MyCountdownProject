@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,10 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Countdown</title>
-    {% load static %}
     <link rel="stylesheet" href="{% static 'style1.css' %}">
-    <!-- Include Emoji Button Library -->
-    <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@4.6.2/dist/index.min.js"></script>
 </head>
 
 <body>
@@ -16,13 +14,71 @@
         <h1>Welcome to the Countdown App!</h1>
         <h2>Add Countdown</h2>
         <form name="countdownForm" method="POST" action="{% url 'add_countdown' %}" onsubmit="return validateForm()">
-            {% csrf_token %} {{ form.as_p }}
+            {% csrf_token %}
+            <label for="event_title">Title:</label>
+            <input type="text" id="event_title" name="event_title" required><br><br>
+
+            <label for="event_date">Date:</label>
+            <input type="date" id="event_date" name="event_date" required><br><br>
+
+            <label for="event_time">Time:</label>
+            <input type="time" id="event_time" name="event_time" required><br><br>
+
+            <label for="event_emoji">Emoji:</label>
+            <input type="text" id="event_emoji" name="event_emoji"><br><br>
+
+            <label for="notes">Notes:</label>
+            <textarea id="notes" name="notes"></textarea><br><br>
 
             <button type="submit">Add Countdown</button>
-            <button class="button" type="submit" onclick="window.location.href='{% url 'all_countdowns' %}'">View All Countdowns</button>
+            <button class="button" type="button" onclick="window.location.href='{% url 'all_countdowns' %}'">View All
+                Countdowns</button>
         </form>
     </div>
-    <script src="static/script.js"></script>
+    <script src="{% static 'script.js' %}"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var countdownTimers = document.querySelectorAll('.countdown-timer');
+
+            countdownTimers.forEach(function (timer) {
+                var eventDate = timer.getAttribute('data-event-date');
+                var eventTime = timer.getAttribute('data-event-time');
+
+                // Combine date and time to create a full date-time string
+                var eventDateTime = eventDate + ' ' + eventTime;
+
+                // Parse the eventDateTime into a JavaScript Date object
+                var targetDate = new Date(eventDateTime).getTime();
+
+                // Update the countdown every second
+                var x = setInterval(function () {
+                    var now = new Date().getTime();
+                    var distance = targetDate - now;
+
+                    // Calculations for days, hours, minutes, and seconds
+                    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    // Display the countdown in the corresponding timer element
+                    timer.innerHTML = '<p><span class="days">' + days + '</span> days ' +
+                        '<span class="hours">' + hours + '</span> hours ' +
+                        '<span class="minutes">' + minutes + '</span> minutes ' +
+                        '<span class="seconds">' + seconds + '</span> seconds</p>';
+
+                    // If the countdown is over, display 'Expired' or remove the timer
+                    if (distance < 0) {
+                        clearInterval(x);
+                        timer.innerHTML = '<p>Expired</p>'; // or remove this line to hide the timer
+                    }
+                }, 1000);
+            });
+        });
+    </script>
+
+
 </body>
 
 </html>

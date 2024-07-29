@@ -1,7 +1,6 @@
 from django import forms
 from .models import Countdown
 
-
 class CountdownForm(forms.ModelForm):
     class Meta:
         model = Countdown
