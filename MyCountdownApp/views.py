@@ -30,7 +30,7 @@ def add_countdown(request):
     return render(request, 'index.html', {'form': form})
 
 
-
+# This code made my app work! Yeaaaaaaa!
 def all_countdowns(request):
     countdowns = Countdown.objects.all()
     formatted_countdowns = []
