@@ -12,7 +12,7 @@ h1 {
 }
 
 .countdown-item {
-    background-color: #c9ee50;
+    background-color: #9ee338fe;
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 15px;
@@ -28,7 +28,7 @@ h1 {
     background-color: #007BFF;
     color: white;
     border-radius: 10px;
-    padding: 10px;
+    padding: 20px 18px 0 0;
     margin-top: 10px;
     width: 97%;
     height: 40px;
