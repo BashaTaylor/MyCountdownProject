@@ -37,48 +37,6 @@
     </div>
     <script src="{% static 'script.js' %}"></script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var countdownTimers = document.querySelectorAll('.countdown-timer');
-
-            countdownTimers.forEach(function (timer) {
-                var eventDate = timer.getAttribute('data-event-date');
-                var eventTime = timer.getAttribute('data-event-time');
-
-                // Combine date and time to create a full date-time string
-                var eventDateTime = eventDate + ' ' + eventTime;
-
-                // Parse the eventDateTime into a JavaScript Date object
-                var targetDate = new Date(eventDateTime).getTime();
-
-                // Update the countdown every second
-                var x = setInterval(function () {
-                    var now = new Date().getTime();
-                    var distance = targetDate - now;
-
-                    // Calculations for days, hours, minutes, and seconds
-                    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                    // Display the countdown in the corresponding timer element
-                    timer.innerHTML = '<p><span class="days">' + days + '</span> days ' +
-                        '<span class="hours">' + hours + '</span> hours ' +
-                        '<span class="minutes">' + minutes + '</span> minutes ' +
-                        '<span class="seconds">' + seconds + '</span> seconds</p>';
-
-                    // If the countdown is over, display 'Expired' or remove the timer
-                    if (distance < 0) {
-                        clearInterval(x);
-                        timer.innerHTML = '<p>Expired</p>'; // or remove this line to hide the timer
-                    }
-                }, 1000);
-            });
-        });
-    </script>
-
-
 </body>
 
 </html>

@@ -8,4 +8,4 @@ class Countdown(models.Model):
     notes = models.TextField(blank=True)
 
     def __str__(self):
-        return self.title  # Fixing the return statement to match the field name
+        return f"{self.event_title} - {self.event_date.strftime('%Y-%m-%d')} {self.event_time.strftime('%H:%M:%S')}"  # Fixing the return statement to match the field name

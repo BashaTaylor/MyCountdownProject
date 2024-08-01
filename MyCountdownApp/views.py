@@ -32,21 +32,22 @@ def add_countdown(request):
 
 
 def all_countdowns(request):
-    countdowns = Countdown.objects.all().values('id', 'event_title', 'event_date', 'event_time', 'event_emoji', 'notes')
+    countdowns = Countdown.objects.all()
     formatted_countdowns = []
     for countdown in countdowns:
-        event_datetime = countdown['event_date'].isoformat() + 'T' + countdown['event_time'].strftime('%H:%M:%S')
-        notes = countdown['notes'].split('\n') if countdown['notes'] else []
+        event_datetime = countdown.event_date.isoformat() + 'T' + countdown.event_time.strftime('%H:%M:%S')
+        notes = countdown.notes.split('\n') if countdown.notes else []
         formatted_countdowns.append({
-            'id': countdown['id'],
-            'event_title': countdown['event_title'],
-            'event_date': countdown['event_date'],
-            'event_time': countdown['event_time'],
+            'id': countdown.id,
+            'event_title': countdown.event_title,
+            'event_date': countdown.event_date.isoformat(),  # Ensure date is in ISO format
+            'event_time': countdown.event_time.strftime('%H:%M:%S'),  # Ensure time is in correct format
             'event_datetime': event_datetime,
-            'event_emoji': countdown['event_emoji'],
+            'event_emoji': countdown.event_emoji,
             'notes': notes,
         })
     return render(request, 'all_countdowns.html', {'countdowns': formatted_countdowns})
+
 
 
 
