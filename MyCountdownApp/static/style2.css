@@ -1,7 +1,7 @@
 /* Basic reset and styles */
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(to right, rgb(193, 166, 12),
+    background: linear-gradient(to right, rgb(184, 183, 180),
     white,lightpink , rgba(144, 249, 249, 0.821));
     margin: 0;
     padding: 0;
