@@ -1,7 +1,8 @@
 /* Basic reset and styles */
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(to right, rgb(7, 118, 253), white , rgba(144, 249, 249, 0.821) );
+    background: linear-gradient(to right, rgb(193, 166, 12),
+    white,lightpink , rgba(144, 249, 249, 0.821));
     margin: 0;
     padding: 0;
     text-align: center; /* Center align text content */
@@ -12,40 +13,39 @@ h1 {
 }
 
 .countdown-item {
-    background-image: url('twinkle-star-pattern-for-photo-effect-and-overlay-abstract-blurry-star-light-texture-for-background-png\ \(2\).webp');
+    background-image: url('flower.png');
     background-repeat: no-repeat;
-    background-color: rgb(66, 215, 252);
+    background-color: white;
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 15px;
     margin-bottom: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center; /* Center contents */
-    width: 90%;
-    max-width: 600px;
+    width: 50%;
+    /* max-width: 700px; */
     margin: 20px auto; /* Center the countdown item */
 }
 
 .countdown-timer {
-    background-color: #007bffd0;
+    background-color: #007bffbc;
     color: rgba(255, 255, 255, 0.995);
     border-radius: 10px;
-    padding: 20px 18px 0 0;
+    padding: 10px 18px 0 0;
     margin-top: 10px;
     width: 97%;
-    height: 40px;
+    height: 30px;
 }
-
 
 .countdown-item .emoji {
     font-size: 48px;
     display: block;
     margin: 0 auto;
     border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    line-height: 80px;
-    background-color: #007bffb3;
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    background-color: #007bffc3;
     color: white;
 }
 
@@ -57,16 +57,16 @@ h1 {
     background-color: #007bffc8;
     color: white;
     border-radius: 10px;
-    padding: 10px;
+    padding: 5px;
     margin-top: 10px;
 }
 
 .countdown-item .notes {
     background-color: #f0f0f0b2;
-    padding: 10px;
+    /* padding: 1px; */
     margin-top: 10px;
     border-radius: 10px;
-    min-height: 40px; /* Ensure visibility */
+    min-height: 20px; /* Ensure visibility */
 }
 
 .countdown-item .countdown span {
@@ -91,7 +91,7 @@ input {
 button {
     padding: 7px;
     border-radius: 7px;
-    background-color: #007bffb1;
+    background-color: #007bffbb;
     color: white;
     border: none;
     cursor: pointer;
@@ -109,16 +109,20 @@ button:hover {
 .notes {
     display: block; /* or inline-block */
     /* Add any other styling you need */
+    
 }
 
 .notes-list {
     list-style-type: none; /* Hide the list markers */
-    padding: 0;
+    padding-top: 10px;
+    height: 30px;
 }
+
 
 .notes-list li {
     display: inline; /* Display notes inline */
     margin-right: 10px; /* Add some space between notes */
+    
 }
 
 .back-to-top {

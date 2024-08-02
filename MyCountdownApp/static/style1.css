@@ -4,15 +4,20 @@
 /* Basic reset and styles */
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(to right, rgb(7, 118, 253), white, rgba(144, 249, 249, 0.821));
+    background: linear-gradient(to right,rgb(186, 160, 12)
+    ,white, lightpink , rgba(144, 249, 249, 0.821));
     margin: 0;
     padding: 0;
 }
 
+#welcome {
+    text-align: center;
+    margin-top: 50px;
+}
 
 .container {
-    background-color: hsla(309, 92%, 59%, 0.996);
-    background-image: url('twinkle-star-pattern-for-photo-effect-and-overlay-abstract-blurry-star-light-texture-for-background-png\ \(2\).webp');
+    background-color: white;
+    background-image: url('flower.png');
     background-repeat: no-repeat;
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -20,10 +25,11 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
     /* Center contents */
-    width: 90%;
-    max-width: 600px;
+    width: 55%;
+    height: 500px;
+    /* max-width: 700px; */
     margin: 20px auto;
-    margin-top: 110px;
+    margin-top: 70px;
     /* Center the countdown item */
 }
 

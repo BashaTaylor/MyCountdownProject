@@ -10,8 +10,9 @@
 </head>
 
 <body>
+    <h1 id="welcome">Welcome to the Countdown App!</h1>
     <div class="container">
-        <h1>Welcome to the Countdown App!</h1>
+        
         <h2>Add Countdown</h2>
         <form name="countdownForm" method="POST" action="{% url 'add_countdown' %}" onsubmit="return validateForm()">
             {% csrf_token %}
