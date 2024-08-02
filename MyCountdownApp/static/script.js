@@ -39,7 +39,7 @@ function startCountdownTimer(endTime, element) {
 }
 
 // Initial function to load countdowns and start timers
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const countdownTimers = document.querySelectorAll('.countdown-timer');
     console.log('Found countdown timers:', countdownTimers.length);
 
@@ -61,10 +61,44 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error(`Missing or invalid data attributes for countdown timer element`);
         }
     });
-    
+
 });
 
 // Function to scroll to the top of the page
 function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
 }
+
+// Function to change theme
+function changeTheme() {
+    const themeSelect = document.getElementById('theme-select');
+    const themeStylesheet = document.getElementById('theme-stylesheet');
+    const selectedTheme = themeSelect.value;
+
+    if (selectedTheme === 'dark') {
+        themeStylesheet.href = '/static/css/dark-theme.css';
+    } else if (selectedTheme === 'medium') {
+        themeStylesheet.href = '/static/css/medium-theme.css';
+
+    } else if (selectedTheme === 'darkest') {
+        themeStylesheet.href = '/static/css/darkest-theme.css';
+
+    } else {
+        themeStylesheet.href = '/static/css/light-theme.css';
+    }
+    
+    // Save the selected theme to localStorage
+    localStorage.setItem('selectedTheme', selectedTheme);
+}
+
+// Load the saved theme on page load
+document.addEventListener('DOMContentLoaded', function () {
+    const savedTheme = localStorage.getItem('selectedTheme');
+    if (savedTheme) {
+        document.getElementById('theme-select').value = savedTheme;
+        changeTheme();
+    }
+});

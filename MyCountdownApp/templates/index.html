@@ -5,14 +5,27 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Countdown</title>
-    <link rel="stylesheet" href="{% static 'style1.css' %}">
+    <title>{% block title %}Add Countdown{% endblock %}</title>
+    <!-- Default Theme -->
+    <link id="theme-stylesheet" rel="stylesheet" href="{% static 'css/light-theme.css' %}">
 </head>
 
-<body>
+<body><br>
+    <div class="theme-switcher">
+        <label for="theme-select">Choose Theme:</label>
+        <select id="theme-select" onchange="changeTheme()">
+            <option value="light">Light</option>
+            <option value="medium">Medium</option>
+            <option value="dark">Dark</option>
+            <option value="darkest">Darkest</option>
+        </select>
+    </div>
+    
+    {% block content %}
     <h1 id="welcome">Welcome to the Countdown App!</h1>
+
     <div class="container">
-        
+
         <h2>Add Countdown</h2>
         <form name="countdownForm" method="POST" action="{% url 'add_countdown' %}" onsubmit="return validateForm()">
             {% csrf_token %}
@@ -36,6 +49,7 @@
                 Countdowns</button>
         </form>
     </div>
+    {% endblock %}
     <script src="{% static 'script.js' %}"></script>
 
 </body>

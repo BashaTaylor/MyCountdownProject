@@ -6,11 +6,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Countdowns</title>
-    <!-- Style sheet link -->
-    <link rel="stylesheet" href="{% static 'style2.css' %}">
+    <!-- Default Theme -->
+    <link id="theme-stylesheet" rel="stylesheet" href="{% static 'css/light-theme.css' %}">
 </head>
 
-<body>
+<body><br>
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+        <label for="theme-select">Choose Theme:</label>
+        <select id="theme-select" onchange="changeTheme()">
+            <option value="light">Light</option>
+            <option value="medium">Medium</option>
+            <option value="dark">Dark</option>
+            <option value="darkest">Darkest</option>
+        </select>
+    </div>
+    
+    {% block content %}
     <h1 id="top-page">All Countdowns</h1>
     <div id="countdowns">
         {% for countdown in countdowns %}
@@ -36,10 +48,9 @@
                 </ul>
             </div>
             <!-- Display countdown timer -->
-            <div class="countdown-timer" 
-            data-event-date="{{ countdown.event_date }}" 
-            data-event-time="{{ countdown.event_time }}">
-            <!-- Countdown timer display -->
+            <div class="countdown-timer" data-event-date="{{ countdown.event_date }}"
+                data-event-time="{{ countdown.event_time }}">
+                <!-- Countdown timer display -->
                 <span class="days">0</span> days
                 <span class="hours">0</span> hours
                 <span class="minutes">0</span> minutes
@@ -62,7 +73,7 @@
 
     <!-- Back to Top button -->
     <button class="back-to-top" type="submit" onclick="scrollToTop()">⬆️</button>
-
+    {% endblock %}
     <!-- Script link -->
     <script src="{% static 'script.js' %}"></script>
 </body>
