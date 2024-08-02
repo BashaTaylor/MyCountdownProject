@@ -7,7 +7,7 @@ body {
     padding: 0;
     /* background: linear-gradient(to right, rgba(210, 171, 122, 0.943), white, lightpink , rgba(144, 249, 249, 0.821)); */
     color: rgb(37, 37, 37);
-    background: linear-gradient(to right, rgb(63, 60, 60), white, blueviolet);
+    background: linear-gradient(to right, rgb(63, 60, 60), white , blueviolet);
     text-align: center; /* Center align text content */
 }
 
@@ -59,11 +59,12 @@ h1 {
 .countdown-timer {
     background-color: #007bffbc;
     color: rgba(255, 255, 255, 0.995);
+    font-weight:bold;
+    font-size: 16px;
     border-radius: 10px;
-    padding: 10px 18px 0 0;
+    padding: 10px 0 10px 0;
     margin-top: 10px;
-    width: 97%;
-    height: 30px;
+    width: 100%;
 }
 
 .countdown-item .emoji {

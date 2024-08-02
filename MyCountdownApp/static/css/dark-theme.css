@@ -57,11 +57,12 @@ h1 {
 .countdown-timer {
     background-color: #007bffbc;
     color: rgba(255, 255, 255, 0.995);
+    font-weight:bold;
+    font-size: 16px;
     border-radius: 10px;
-    padding: 10px 18px 0 0;
+    padding: 10px 0 10px 0;
     margin-top: 10px;
-    width: 97%;
-    height: 30px;
+    width: 100%;
 }
 
 .countdown-item .emoji {

@@ -10,12 +10,16 @@ body {
     background: linear-gradient(to bottom, black 95%, orange);
     background-size: cover;
     background-repeat: no-repeat;
-    height: 1100px;
+    height: 1110px;
     text-align: center; /* Center align text content */
 }
 
 h1 {
     text-align: center;
+}
+
+h2 {
+    padding-bottom: 20px;
 }
 
 #welcome {
@@ -31,7 +35,7 @@ h1 {
     background-repeat: no-repeat;
     border: 1px solid #ddd;
     border-radius: 10px;
-    padding: 15px;
+    padding: 45px 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
     /* Center contents */
@@ -58,13 +62,14 @@ h1 {
 }
 
 .countdown-timer {
-    background-color: #007bffbc;
-    color: rgb(32, 32, 130);
+    background-color: #007bffb0;
+    color:rgb(29, 6, 184);
+    font-weight:bold;
+    font-size: 16px;
     border-radius: 10px;
-    padding: 10px 18px 0 0;
+    padding: 10px 0 10px 0;
     margin-top: 10px;
-    width: 97%;
-    height: 30px;
+    width: 100%;
 }
 
 .countdown-item .emoji {
@@ -87,6 +92,7 @@ h1 {
 
 .countdown-item p {
     margin-bottom: 5px;
+    color: rgb(252, 166, 46);
 }
 
 .countdown-item .countdown {
@@ -98,7 +104,7 @@ h1 {
 }
 
 .countdown-item .notes {
-    background-color: #8a8888bd;
+    background-color: #717070bd;
     margin-top: 10px;
     border-radius: 10px;
 }
@@ -131,7 +137,7 @@ button, .button {
     color: rgb(32, 32, 130);
     border: none;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 10px;
     /* margin: 0 auto; */
 }
 
@@ -141,6 +147,7 @@ button:hover {
 
 .countdown {
     font-size: 1.2em;
+    color:rgb(252, 166, 46) ;
 }
 
 .button-row {
@@ -215,3 +222,6 @@ button:hover {
     background: rgba(32, 32, 130);
 }
 
+label {
+    color:rgb(252, 166, 46) ;
+}
