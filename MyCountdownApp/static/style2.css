@@ -12,7 +12,9 @@ h1 {
 }
 
 .countdown-item {
-    background-color: #9ee338fe;
+    background-image: url('twinkle-star-pattern-for-photo-effect-and-overlay-abstract-blurry-star-light-texture-for-background-png\ \(2\).webp');
+    background-repeat: no-repeat;
+    background-color: rgb(66, 215, 252);
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 15px;
@@ -25,8 +27,8 @@ h1 {
 }
 
 .countdown-timer {
-    background-color: #007BFF;
-    color: white;
+    background-color: #007bffd0;
+    color: rgba(255, 255, 255, 0.995);
     border-radius: 10px;
     padding: 20px 18px 0 0;
     margin-top: 10px;
@@ -43,7 +45,7 @@ h1 {
     width: 80px;
     height: 80px;
     line-height: 80px;
-    background-color: #007BFF;
+    background-color: #007bffb3;
     color: white;
 }
 
@@ -52,7 +54,7 @@ h1 {
 }
 
 .countdown-item .countdown {
-    background-color: #007BFF;
+    background-color: #007bffc8;
     color: white;
     border-radius: 10px;
     padding: 10px;
@@ -60,7 +62,7 @@ h1 {
 }
 
 .countdown-item .notes {
-    background-color: #f0f0f0;
+    background-color: #f0f0f0b2;
     padding: 10px;
     margin-top: 10px;
     border-radius: 10px;
@@ -89,7 +91,7 @@ input {
 button {
     padding: 7px;
     border-radius: 7px;
-    background-color: #007bff;
+    background-color: #007bffb1;
     color: white;
     border: none;
     cursor: pointer;

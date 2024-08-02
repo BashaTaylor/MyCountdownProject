@@ -11,17 +11,19 @@ body {
 
 
 .container {
-    background-color: #9ee338fe;
+    background-color: hsla(309, 92%, 59%, 0.996);
+    background-image: url('twinkle-star-pattern-for-photo-effect-and-overlay-abstract-blurry-star-light-texture-for-background-png\ \(2\).webp');
+    background-repeat: no-repeat;
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 15px;
-    margin-bottom: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
     /* Center contents */
     width: 90%;
     max-width: 600px;
     margin: 20px auto;
+    margin-top: 110px;
     /* Center the countdown item */
 }
 
