@@ -4,8 +4,7 @@
 /* Basic reset and styles */
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(to right,rgb(186, 160, 12)
-    ,white, lightpink , rgba(144, 249, 249, 0.821));
+    background: linear-gradient(to right, rgba(210, 171, 122, 0.943), white, lightpink , rgba(144, 249, 249, 0.821));
     margin: 0;
     padding: 0;
 }
