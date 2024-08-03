@@ -6,7 +6,7 @@ body {
     margin: 0;
     padding: 0;
     color: white;
-    background: linear-gradient(to right, black,black,  navy, black,  black);
+    background: linear-gradient(to right, black,  navy, black);
     text-align: center; /* Center align text content */
 }
 
