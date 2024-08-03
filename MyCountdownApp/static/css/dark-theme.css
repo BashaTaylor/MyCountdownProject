@@ -5,9 +5,8 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    /* background: linear-gradient(to right, rgba(210, 171, 122, 0.943), white, lightpink , rgba(144, 249, 249, 0.821)); */
     color: white;
-    background: linear-gradient(to right, black, black, navy,   black, black);
+    background: linear-gradient(to right, black,black,  navy, black,  black);
     text-align: center; /* Center align text content */
 }
 

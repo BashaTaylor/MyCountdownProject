@@ -80,11 +80,12 @@ function changeTheme() {
 
     if (selectedTheme === 'dark') {
         themeStylesheet.href = '/static/css/dark-theme.css';
+        
     } else if (selectedTheme === 'medium') {
         themeStylesheet.href = '/static/css/medium-theme.css';
 
-    } else if (selectedTheme === 'darkest') {
-        themeStylesheet.href = '/static/css/darkest-theme.css';
+    } else if (selectedTheme === 'darker') {
+        themeStylesheet.href = '/static/css/darker-theme.css';
 
     } else {
         themeStylesheet.href = '/static/css/light-theme.css';

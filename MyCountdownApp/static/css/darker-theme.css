@@ -5,17 +5,14 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    /* background: linear-gradient(to right, rgba(210, 171, 122, 0.943), white, lightpink , rgba(144, 249, 249, 0.821)); */
     color: rgb(29, 6, 184);
-    background: linear-gradient(to bottom, black 95%, orange);
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 1110px;
+    background: linear-gradient(to right, black,black,black,black, black,rgb(23, 109, 111), black,black,black,black, black);
     text-align: center; /* Center align text content */
 }
 
 h1 {
     text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
@@ -63,9 +60,9 @@ h2 {
 
 .countdown-timer {
     background-color: #007bffb0;
-    color:rgb(29, 6, 184);
+    color:rgb(19, 1, 131);
     font-weight:bold;
-    font-size: 16px;
+    font-size: 18px;
     border-radius: 10px;
     padding: 10px 0 10px 0;
     margin-top: 10px;
@@ -95,18 +92,21 @@ h2 {
     color: rgb(252, 166, 46);
 }
 
-.countdown-item .countdown {
+/* .countdown-item .countdown {
     background-color: #007bffc8;
     color: white;
     border-radius: 10px;
     padding: 5px;
     margin-top: 10px;
-}
+} */
 
 .countdown-item .notes {
-    background-color: #717070bd;
+    background-color: #c1bdbd71;
     margin-top: 10px;
     border-radius: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    color:rgb(19, 1, 131);
 }
 
 .countdown-item .countdown span {
@@ -180,7 +180,7 @@ button:hover {
     right: 30px;
     width: 50px;
     height: 50px;
-    background-color: #007bff;
+    background-color: #042951;
     color: white;
     border: none;
     border-radius: 50%;
@@ -204,7 +204,7 @@ button:hover {
     left: 30px; /* Adjusted to bottom left */
     width: 50px;
     height: 50px;
-    background-color: #007bff;
+    background-color: #042951;
     color: white;
     border: none;
     border-radius: 50%;
@@ -223,5 +223,6 @@ button:hover {
 }
 
 label {
-    color:rgb(252, 166, 46) ;
+    color:rgb(42, 14, 225) ;
+    font-weight: bold;
 }
