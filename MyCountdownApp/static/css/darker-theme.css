@@ -6,7 +6,7 @@ body {
     margin: 0;
     padding: 0;
     color: rgb(29, 6, 184);
-    background: linear-gradient(to right, black,black,black,black, black,rgb(23, 109, 111), black,black,black,black, black);
+    background: linear-gradient(to right, black,black,black, black,rgb(23, 109, 111), black,black,black, black);
     text-align: center; /* Center align text content */
 }
 
@@ -17,6 +17,35 @@ h1 {
 
 h2 {
     padding-bottom: 20px;
+}
+
+input {
+    border-radius: 5px;
+    border-color: black;
+    background-color: rgb(59, 58, 58);
+    color: whitesmoke;
+}
+
+datepicker::before {
+    color: white;
+}
+
+timepicker::before {
+    color: white;
+}
+textarea {
+    background-color:rgb(59, 58, 58);
+    color: whitesmoke;
+}
+
+label {
+    color:rgb(42, 14, 225) ;
+    font-weight: bold;
+}
+
+#theme-select {
+    background-color:black ;
+    color: whitesmoke;
 }
 
 #welcome {
@@ -222,7 +251,3 @@ button:hover {
     background: rgba(32, 32, 130);
 }
 
-label {
-    color:rgb(42, 14, 225) ;
-    font-weight: bold;
-}

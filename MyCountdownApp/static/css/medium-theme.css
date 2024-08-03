@@ -115,7 +115,11 @@ h1 {
 input {
     border-radius: 5px;
     border-color: lightgray;
-    background-color: gray;
+    background-color: rgb(225, 223, 223);
+}
+
+textarea {
+    background-color:rgb(225, 223, 223);
 }
 
 #form3 {
