@@ -24,7 +24,16 @@ input {
     border-color: black;
     background-color: rgb(59, 58, 58);
     color: whitesmoke;
+    caret-color: fuchsia;
+    caret-shape: block;
 }
+
+textarea {
+    background-color:rgb(59, 58, 58);
+    color: whitesmoke;
+    caret-color: fuchsia;
+}
+
 
 datepicker::before {
     color: white;
@@ -33,10 +42,7 @@ datepicker::before {
 timepicker::before {
     color: white;
 }
-textarea {
-    background-color:rgb(59, 58, 58);
-    color: whitesmoke;
-}
+
 
 label {
     color:rgb(42, 14, 225) ;

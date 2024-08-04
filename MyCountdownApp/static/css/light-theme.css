@@ -8,6 +8,7 @@ body {
     background: linear-gradient(to right, rgba(176, 115, 39, 0.943), white, lightpink , rgba(144, 249, 249, 0.821));
     color: black;
     text-align: center; /* Center align text content */
+
 }
 
 h1 {
@@ -109,6 +110,13 @@ h1 {
 input {
     border-radius: 5px;
     border-color: lightgray;
+    caret-color: fuchsia;
+    color: rgb(202, 3, 149);
+}
+
+textarea {
+    color: rgb(202, 3, 149);
+    caret-color: fuchsia;
 }
 
 #form3 {

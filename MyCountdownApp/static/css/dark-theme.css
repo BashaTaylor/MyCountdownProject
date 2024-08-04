@@ -119,10 +119,12 @@ input {
     border-radius: 5px;
     border-color: lightgray;
     background-color: lightgray;
+    caret-color: blue;
 }
 
 textarea {
     background-color:lightgray;
+    caret-color: blue;
 }
 
 #form3 {

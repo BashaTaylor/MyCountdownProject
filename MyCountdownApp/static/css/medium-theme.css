@@ -112,15 +112,19 @@ h1 {
     justify-content: center;
 }
 
+
 input {
     border-radius: 5px;
     border-color: lightgray;
-    background-color: rgb(225, 223, 223);
+    caret-color: blue;
+    color: blue;
 }
 
 textarea {
-    background-color:rgb(225, 223, 223);
+    color: blue;
+    caret-color: blue;
 }
+
 
 #form3 {
     margin-top: 40px;
