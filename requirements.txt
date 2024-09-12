@@ -1,4 +1,8 @@
-asgiref==3.8.1
-Django==5.0.6
-sqlparse==0.5.0
-tzdata==2024.1
+bcrypt==3.2.0
+cffi==1.14.6
+Django==2.2
+pycparser==2.20
+python-decouple==3.8
+pytz==2021.1
+six==1.16.0
+sqlparse==0.4.1
