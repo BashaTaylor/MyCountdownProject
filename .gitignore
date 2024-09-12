@@ -1,1 +1,4 @@
-/MyCountdownProject
+.env
+djangoPy3Env/
+__pycache__
+
